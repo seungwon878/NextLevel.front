@@ -1,0 +1,42 @@
+.common-container {
+  max-width: 370px;
+  margin: 40px auto;
+  padding: 32px 18px 18px 18px;
+  border-radius: 8px;
+  background: #fff;
+  font-family: 'Inter', 'Pretendard', sans-serif;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+h2 {
+  margin-bottom: 0.2em;
+  font-size: 1.1em;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+
+.signup-title {
+  margin: 0 0 0.2em 0;
+  font-size: 1.45em;
+  font-weight: bold;
+  letter-spacing: 0.01em;
+}
+
+.subtitle {
+  margin-bottom: 1.5em;
+  color: #888;
+  font-size: 1em;
+}
+
+.login-link {
+  margin-top: 2.1em;
+  text-align: center;
+  color: #888;
+  font-size: 1em;
+}
+
+.login-link a {
+  color: #111;
+  text-decoration: none;
+  font-weight: bold;
+}
