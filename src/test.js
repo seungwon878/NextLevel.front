@@ -114,10 +114,7 @@ function LoginForm() {
         </div>
       </div>
       
-      {error && <div className="error-message">{error}</div>}
-      <button type="submit" className="login-btn" disabled={isLoading}>
-        {isLoading ? '처리 중...' : 'Login'}
-      </button>
+      
       <div className="register-row">
         Don’t have an Account ?{' '}
         <span
