@@ -1,0 +1,31 @@
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.register-button {
+  width: 100%;
+  padding: 13px 0;
+  margin-top: 0.8em;
+  background: #111;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 1.08em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.register-button:disabled {
+  background: #888;
+  cursor: not-allowed;
+}
+
+.error-message {
+  margin-top: 0.8em;
+  color: #d33;
+  font-size: 0.98em;
+  text-align: center;
+}

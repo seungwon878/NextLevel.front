@@ -1,10 +1,10 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import MainPage from './pages/MainPage'
-import LoginPage from './pages/LoginPage';
-import SignupPage from './pages/SignupPage';
-import SignupSuccess from './pages/SignupSuccess';
-import ForgotPasswordPage from './pages/ForgotPasswordPage';
+import MainPage from './MainPage/MainPage'
+import LoginPage from './LoginPage/LoginPage';
+import SignupPage from './SignupPage/SignupPage';
+import SignupSuccess from './SignupSuccessPage/SignupSuccess';
+import ForgotPasswordPage from './ForgotPasswordPage/ForgotPasswordPage';
 import { AuthProvider, useAuth } from './AuthContext';
 
 function App() {
