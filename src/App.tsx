@@ -1,3 +1,7 @@
-import LandingPage from './LandingPage';
+import React from 'react';
+import { useRoutes } from 'react-router-dom';
+import { routes } from './Routes/routes';
 
-<Route path="/questions" element={<LandingPage />} />
+const App: React.FC = () => {
+  return <>{useRoutes(routes)}</>;
+};
