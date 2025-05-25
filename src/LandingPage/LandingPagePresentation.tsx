@@ -1,14 +1,15 @@
+// src/LandingPage/LandingPagePresentation.tsx
 import React from 'react';
 import {
   Box,
   Input,
-  Select,
   Button,
-  VStack,
-  HStack,
   Text,
-  StackDivider,
+  chakra,             // ← chakra 팩토리 import
 } from '@chakra-ui/react';
+
+// chakra 팩토리로 'select' 를 감싸면, HTMLSelectElement 타입이 들어옵니다.
+const StyledSelect = chakra('select');
 
 export interface Item {
   id: number;
@@ -39,57 +40,98 @@ const LandingPagePresentation: React.FC<Props> = ({
   professor,
   onProfessorChange,
 }) => (
-  <HStack align="start" p={8} spacing={6} bg="gray.50">
-    {/* Filter Section */}
-    <VStack spacing={4} w="25%">
+  <Box display="flex" alignItems="flex-start" p={8} gap={6} bg="gray.50">
+    {/* ◀ 필터 영역 */}
+    <Box display="flex" flexDir="column" gap={4} width="25%">
       <Input
         placeholder="검색"
         value={searchText}
         onChange={e => onSearchTextChange(e.target.value)}
       />
-      <Select placeholder="학교 선택" value={school} onChange={e => onSchoolChange(e.target.value)}>
+
+      {/* ◆ StyledSelect 사용 */}
+      <StyledSelect
+        value={school}
+        onChange={e => onSchoolChange(e.target.value)}
+        p={2}
+        border="1px solid"
+        borderColor="gray.200"
+        borderRadius="md"
+      >
+        <option value="">학교 선택</option>
         <option value="Section 30">Section 30</option>
         <option value="Section 31">Section 31</option>
-        <option value="Section 32">Section 32</option>
-      </Select>
-      <Select placeholder="과목 선택" value={subject} onChange={e => onSubjectChange(e.target.value)}>
+      </StyledSelect>
+
+      <StyledSelect
+        value={subject}
+        onChange={e => onSubjectChange(e.target.value)}
+        p={2}
+        border="1px solid"
+        borderColor="gray.200"
+        borderRadius="md"
+      >
+        <option value="">과목 선택</option>
         <option value="CS">CS</option>
         <option value="Math">Math</option>
-        <option value="English">English</option>
-      </Select>
-      <Select placeholder="교수 선택" value={professor} onChange={e => onProfessorChange(e.target.value)}>
+      </StyledSelect>
+
+      <StyledSelect
+        value={professor}
+        onChange={e => onProfessorChange(e.target.value)}
+        p={2}
+        border="1px solid"
+        borderColor="gray.200"
+        borderRadius="md"
+      >
+        <option value="">교수 선택</option>
         <option value="김철수">김철수</option>
         <option value="이영희">이영희</option>
-        <option value="박민수">박민수</option>
-      </Select>
-      <Button width="100%">→</Button>
-      <Button width="100%" colorScheme="teal">업로드</Button>
-    </VStack>
+      </StyledSelect>
 
-    {/* List Section */}
-    <Box w="75%" p={4} bg="white" borderRadius="md" boxShadow="sm">
-      <VStack divider={<StackDivider />} spacing={4} align="stretch">
-        {items.length > 0 ? (
-          items.map(item => (
-            <HStack key={item.id} justify="space-between">
-              <Box>
-                <Text fontSize="sm" color="gray.500">{item.section}</Text>
-                <Text fontSize="lg" fontWeight="semibold">{item.title}</Text>
-              </Box>
-              <HStack spacing={2}>
-                <Button size="sm">자세히 보기</Button>
-                <Button size="sm" colorScheme="teal">채팅</Button>
-              </HStack>
-            </HStack>
-          ))
-        ) : (
-          <Text textAlign="center" color="gray.500" py={8}>
-            조건에 맞는 글이 없습니다.
-          </Text>
-        )}
-      </VStack>
+      <Button w="100%">→</Button>
+      <Button w="100%" colorScheme="teal">
+        업로드
+      </Button>
     </Box>
-  </HStack>
+
+    {/* ▶ 리스트 영역 (이전과 동일) */}
+    <Box width="75%" p={4} bg="white" borderRadius="md" boxShadow="sm">
+      {items.length > 0 ? (
+        items.map(item => (
+          <Box
+            key={item.id}
+            display="flex"
+            justifyContent="space-between"
+            alignItems="flex-start"
+            p={4}
+            borderBottom="1px solid"
+            borderColor="gray.200"
+            gap={2}
+          >
+            <Box>
+              <Text fontSize="sm" color="gray.500">
+                {item.section}
+              </Text>
+              <Text fontSize="lg" fontWeight="semibold">
+                {item.title}
+              </Text>
+            </Box>
+            <Box display="flex" gap={2}>
+              <Button size="sm">자세히 보기</Button>
+              <Button size="sm" colorScheme="teal">
+                채팅
+              </Button>
+            </Box>
+          </Box>
+        ))
+      ) : (
+        <Text textAlign="center" color="gray.500" py={8}>
+          조건에 맞는 글이 없습니다.
+        </Text>
+      )}
+    </Box>
+  </Box>
 );
 
 export default LandingPagePresentation;
