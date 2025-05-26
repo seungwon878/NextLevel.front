@@ -1,6 +1,20 @@
 import React, { useState } from 'react';
 import './Input.css';
-function PasswordInput({ label, value, onChange, placeholder, ...props }) {
+
+interface PasswordInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+  label: string;
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  placeholder?: string;
+}
+
+const PasswordInput: React.FC<PasswordInputProps> = ({
+  label,
+  value,
+  onChange,
+  placeholder,
+  ...props
+}) => {
   const [show, setShow] = useState(false);
 
   return (
@@ -29,6 +43,6 @@ function PasswordInput({ label, value, onChange, placeholder, ...props }) {
       </label>
     </div>
   );
-}
+};
 
 export default PasswordInput;

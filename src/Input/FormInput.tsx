@@ -1,6 +1,18 @@
 import React from 'react';
 import './Input.css';
-function FormInput({ label, type = "text", value, onChange, placeholder, ...props }) {
+
+interface FormInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+  label: string;
+}
+
+const FormInput: React.FC<FormInputProps> = ({
+  label,
+  type = "text",
+  value,
+  onChange,
+  placeholder,
+  ...props
+}) => {
   return (
     <div className="form-group">
       <label>
@@ -17,6 +29,6 @@ function FormInput({ label, type = "text", value, onChange, placeholder, ...prop
       </label>
     </div>
   );
-}
+};
 
 export default FormInput;
